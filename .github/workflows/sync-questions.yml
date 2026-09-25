@@ -1,0 +1,53 @@
+name: Sync clean question bank
+on:
+  push:
+    branches: [r60-preview]
+    paths: [.github/workflows/sync-questions.yml]
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: r60-preview
+      - name: Copy original questions and fix duplicated x10 distractors
+        run: |
+          curl -fsSL "https://raw.githubusercontent.com/EudomarC/Reto-60/r60-games-integration/questions.js" -o questions.js
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          p=Path('questions.js')
+          s=p.read_text()
+          pat=re.compile(r'(¿Cuánto es (\d+) × 10\?","a":\["\d+","\d+","(\d+)",")\3("\],"c":1)')
+          def fix(m):
+              n=int(re.search(r'¿Cuánto es (\d+) × 10',m.group(1)).group(1))
+              duplicate=int(m.group(3))
+              replacement=duplicate+n
+              return m.group(1)+str(replacement)+m.group(4)
+          s,n=pat.subn(fix,s)
+          if n != 10:
+              raise SystemExit(f'Expected 10 x10 fixes, got {n}')
+          p.write_text(s)
+          PY
+      - name: Validate bank
+        run: |
+          node - <<'NODE'
+          const fs=require('fs'),vm=require('vm');
+          const src=fs.readFileSync('questions.js','utf8').replace('const questions =','globalThis.questions =');
+          const ctx={}; vm.createContext(ctx); vm.runInContext(src,ctx);
+          const qs=ctx.questions;
+          const bad=qs.filter(x=>!x||typeof x.q!=='string'||!Array.isArray(x.a)||x.a.length!==4||!Number.isInteger(x.c)||x.c<0||x.c>3||new Set(x.a.map(v=>String(v).trim().toLowerCase())).size!==4);
+          const dup=qs.length-new Set(qs.map(x=>x.q.trim().toLowerCase())).size;
+          if(bad.length||dup) throw new Error(`Invalid=${bad.length}, duplicate questions=${dup}`);
+          console.log(`Validated ${qs.length} questions`);
+          NODE
+      - name: Commit questions.js
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add questions.js
+          git diff --cached --quiet && exit 0
+          git commit -m "Restore and clean full questions bank"
+          git push origin HEAD:r60-preview
