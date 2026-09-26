@@ -1,0 +1,43 @@
+name: Sync original interface safely
+on:
+  push:
+    branches: [r60-preview]
+    paths: [.github/workflows/sync-interface.yml]
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: r60-preview
+          fetch-depth: 0
+      - name: Copy intact interface modules from original
+        run: |
+          set -euo pipefail
+          BASE="https://raw.githubusercontent.com/EudomarC/Reto-60/r60-games-integration"
+          for f in index.html challenge.js question-packs.js; do
+            curl -fsSL "$BASE/$f" -o "$f"
+            test -s "$f"
+          done
+      - name: Basic integrity checks
+        run: |
+          set -euo pipefail
+          grep -q 'const CHALLENGE_VERSION' challenge.js
+          grep -q 'const knowledgeQuestionPack' question-packs.js
+          grep -q 'questions.js' index.html
+          grep -q 'categories.js' index.html
+          grep -q 'challenge.js' index.html
+          grep -q 'profile.js' index.html
+          node --check challenge.js
+          node --check question-packs.js
+          echo "Interface source files passed integrity checks"
+      - name: Commit intact modules
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add index.html challenge.js question-packs.js
+          git diff --cached --quiet && exit 0
+          git commit -m "Restore complete game interface modules"
+          git push origin HEAD:r60-preview
