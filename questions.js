@@ -2938,5 +2938,203 @@ const questions = [
       "HTTP"
     ],
     "c": 0
+  },
+  {
+    "q": "En Minecraft, ¿qué criatura verde puede explotar cerca del jugador?",
+    "a": [
+      "Creeper",
+      "Enderman",
+      "Aldeano",
+      "Esqueleto"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "En Minecraft, ¿qué material se necesita para fabricar una mesa de encantamientos?",
+    "a": [
+      "Diamante",
+      "Cobre",
+      "Hierro",
+      "Carbón"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "¿Cómo se llama la dimensión de Minecraft a la que se entra normalmente mediante un portal de obsidiana?",
+    "a": [
+      "El Nether",
+      "El Océano",
+      "La Jungla",
+      "La Aldea"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "En Minecraft, ¿qué criatura alta y oscura puede teletransportarse?",
+    "a": [
+      "Enderman",
+      "Creeper",
+      "Zombi",
+      "Araña"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "En Minecraft, ¿qué herramienta se usa principalmente para extraer piedra y minerales?",
+    "a": [
+      "Pico",
+      "Pala",
+      "Azada",
+      "Caña de pescar"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "En Minecraft, ¿qué objeto permite dormir y fijar un punto de reaparición en el mundo normal?",
+    "a": [
+      "Cama",
+      "Cofre",
+      "Horno",
+      "Yunque"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "¿Cómo se llama la moneda virtual utilizada en Roblox?",
+    "a": [
+      "Robux",
+      "Minecoins",
+      "Rings",
+      "Gemas"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "En Roblox, ¿cómo se llaman los mundos o juegos creados por la comunidad dentro de la plataforma?",
+    "a": [
+      "Experiencias",
+      "Capítulos",
+      "Cartuchos",
+      "Discos"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "¿Cuál de estos nombres corresponde a una experiencia conocida de Roblox?",
+    "a": [
+      "Brookhaven RP",
+      "The Nether",
+      "Green Hill Zone",
+      "Hyrule Field"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "¿Cuál de estas experiencias de Roblox está relacionada con cuidar y coleccionar mascotas?",
+    "a": [
+      "Adopt Me!",
+      "Doors",
+      "Arsenal",
+      "Tower of Hell"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "¿Cuál de estas experiencias pertenece a Roblox?",
+    "a": [
+      "Blox Fruits",
+      "Mario Kart",
+      "Animal Crossing",
+      "Gran Turismo"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "En Roblox, ¿qué representa normalmente un avatar?",
+    "a": [
+      "Al jugador dentro de la experiencia",
+      "Una contraseña",
+      "El servidor completo",
+      "Una moneda"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "¿Cómo se llama la protagonista humana de El Asombroso Circo Digital?",
+    "a": [
+      "Pomni",
+      "Ragatha",
+      "Gangle",
+      "Zooble"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "En El Asombroso Circo Digital, ¿quién actúa como maestro de ceremonias del circo?",
+    "a": [
+      "Caine",
+      "Jax",
+      "Kinger",
+      "Bubble"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "¿Cuál de estos personajes de El Asombroso Circo Digital tiene apariencia de conejo?",
+    "a": [
+      "Jax",
+      "Kinger",
+      "Pomni",
+      "Gangle"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "¿Cuál de estos personajes de El Asombroso Circo Digital lleva una máscara teatral?",
+    "a": [
+      "Gangle",
+      "Jax",
+      "Caine",
+      "Kinger"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "¿Cuál de estos personajes de El Asombroso Circo Digital tiene temática de pieza de ajedrez?",
+    "a": [
+      "Kinger",
+      "Pomni",
+      "Ragatha",
+      "Zooble"
+    ],
+    "c": 0,
+    "category": "gaming"
+  },
+  {
+    "q": "¿Cómo se llama la muñeca de trapo de El Asombroso Circo Digital?",
+    "a": [
+      "Ragatha",
+      "Pomni",
+      "Gangle",
+      "Bubble"
+    ],
+    "c": 0,
+    "category": "gaming"
   }
 ];
